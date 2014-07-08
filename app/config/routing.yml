@@ -1,0 +1,4 @@
+lgdd_site:
+    resource: "@LGDDSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

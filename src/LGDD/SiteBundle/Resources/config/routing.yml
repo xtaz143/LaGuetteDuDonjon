@@ -1,0 +1,3 @@
+lgdd_site_homepage:
+    pattern:  /
+    defaults: { _controller: LGDDSiteBundle:Default:index }
