@@ -1,0 +1,7 @@
+parameters:
+#    lgdd_user.example.class: LGDD\UserBundle\Example
+
+services:
+#    lgdd_user.example:
+#        class: %lgdd_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
