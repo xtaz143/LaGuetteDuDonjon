@@ -2,3 +2,12 @@ lgdd_site:
     resource: "@LGDDSiteBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    pattern: /login
+    defaults: { _controller: LGDDUserBundle:Security:login }
+
+login_check: 
+    pattern: /login_check
+
+logout:
+    pattern: /logout
