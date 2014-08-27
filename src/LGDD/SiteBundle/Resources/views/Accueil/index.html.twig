@@ -1,7 +1,10 @@
 {% extends "LGDDSiteBundle::layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Accueil{% endblock %}
+{% block title %} Accueil {% endblock %}
 
-{% block body %}
-    Page d'accueil sera ici!
+{% block menu %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    Case depart!
 {% endblock %}

@@ -5,13 +5,22 @@ namespace LGDD\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 
+
+/*
+ *
+ * Conctroleur servant pour la gestion d'authentification
+ *
+ */
+
+
+
 class SecurityController extends Controller
 {
   public function loginAction() {
 
     // Si le visiteur est déjà identifié, on le redirige vers l'accueil
     if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-      return $this->redirect($this->generateUrl('lgdd_site_homepage'));
+      return $this->redirect($this->generateUrl('lgdd_admin_homepage'));
     }
 
     $request = $this->getRequest();

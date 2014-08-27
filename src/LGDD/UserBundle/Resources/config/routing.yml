@@ -1,3 +1,15 @@
-lgdd_user_homepage:
+lgdd_admin_homepage:
     pattern:  /login/administration
-    defaults: { _controller: LGDDUserBundle:Administation:index }
+    defaults: { _controller: LGDDUserBundle:Administration:index }
+    
+lgdd_ajouter_article:
+    pattern:  /login/ajouter
+    defaults: { _controller: LGDDUserBundle:Administration:ajouterArticle }
+    
+lgdd_modifier_article:
+    pattern:  /login/modifier/{id}
+    defaults: { _controller: LGDDUserBundle:Administration:modifierArticle }
+    
+lgdd_supprimer_article:
+    pattern:  /login/supprimer/{id}
+    defaults: { _controller: LGDDUserBundle:Administration:supprimerArticle }

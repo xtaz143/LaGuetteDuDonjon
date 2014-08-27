@@ -1,3 +1,14 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}La guette du donjon{% endblock %}
+{% block title %}
+	default layout site
+{% endblock %}
+
+{% block menu %}	
+	{{ render(controller("LGDDSiteBundle:Menu:menu")) }}
+{% endblock %}
+
+{% block content %}
+	{% include "LGDDSiteBundle:Content:content.html.twig" %}
+{% endblock %}
+

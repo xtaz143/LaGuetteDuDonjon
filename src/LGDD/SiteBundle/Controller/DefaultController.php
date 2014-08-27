@@ -10,4 +10,15 @@ class DefaultController extends Controller
     {
         return $this->render('LGDDSiteBundle:Accueil:index.html.twig');
     }
+
+     public function voirAction($id){
+        $repository = $this->getDoctrine()
+                      	   ->getManager()
+                           ->getRepository('LGDDSiteBundle:Article');
+    	$article = $repository->find($id);
+        
+    	return $this->render('LGDDSiteBundle:Content:content.html.twig', array(
+        	'article' => $article
+    	));
+    }
 }
