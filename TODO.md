@@ -4,3 +4,4 @@ Task List
 - [ ] Add **BBCode**
 - [ ] Make fixture
 - [ ] Ameliorate All things
+- [ ] dictionary
