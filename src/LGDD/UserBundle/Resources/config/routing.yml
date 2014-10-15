@@ -3,13 +3,24 @@ lgdd_admin_homepage:
     defaults: { _controller: LGDDUserBundle:Administration:index }
     
 lgdd_ajouter_article:
-    pattern:  /login/ajouter
+    pattern:  /login/ajouter/article
     defaults: { _controller: LGDDUserBundle:Administration:ajouterArticle }
-    
+
 lgdd_modifier_article:
-    pattern:  /login/modifier/{id}
+    pattern:  /login/modifier/article/{id}
     defaults: { _controller: LGDDUserBundle:Administration:modifierArticle }
+
+
+
+lgdd_ajouter_categorie:
+    pattern:  /login/ajouter/categorie
+    defaults: { _controller: LGDDUserBundle:Administration:ajouterCategorie }        
+  
+lgdd_modifier_categorie:
+    pattern:  /login/modifier/categorie/{id}
+    defaults: { _controller: LGDDUserBundle:Administration:modifierCategorie }
     
-lgdd_supprimer_article:
-    pattern:  /login/supprimer/{id}
-    defaults: { _controller: LGDDUserBundle:Administration:supprimerArticle }
+
+lgdd_supprimer:
+    pattern:  /login/supprimer/{type}/{id}
+    defaults: { _controller: LGDDUserBundle:Administration:supprimer }

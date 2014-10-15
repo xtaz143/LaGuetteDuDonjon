@@ -1,0 +1,31 @@
+ {% extends "LGDDSiteBundle::layout.html.twig" %}
+
+{% block title %} Article {% endblock %}
+
+{% block body %}
+
+ 	{{ _self.display_list_categorie(categories) }}
+	<h2>{{ article.titre }}</h2>
+
+	<div >
+		{{ article.contenu }}
+	</div>
+
+	{{ _self.display_list_categorie(categories) }}
+	
+{% endblock %}
+
+
+
+{% macro display_list_categorie(liste_categories) %}    
+	
+	<hr>
+		<a href="{{ path('lgdd_voir_annexe') }}">
+                <span>Accueil</span>
+        </a> /
+	  	{% for categorie in liste_categories %}
+            <span>{{ categorie.titre }}</span> / 
+        {% endfor %}
+	<hr>
+
+{% endmacro %}

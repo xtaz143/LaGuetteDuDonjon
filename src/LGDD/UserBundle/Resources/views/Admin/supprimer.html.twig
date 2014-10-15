@@ -1,0 +1,24 @@
+{% extends "LGDDUserBundle::layout.html.twig" %}
+
+{% block menu %}
+
+  {% include "LGDDUserBundle:Admin:menu.html.twig" %}
+
+{% endblock %}
+
+{% block content %}
+
+  
+  <h2>Supprimer </h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer "{{ element.titre }}" ?
+  </p>
+
+  {# On met l'id de l'element dans la route de l'action du formulaire #}
+  <form action="{{ path('lgdd_supprimer', {'id': element.id , 'type' : type_de_element}) }}" method="post">    
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

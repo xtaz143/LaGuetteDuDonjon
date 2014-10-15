@@ -6,13 +6,80 @@
 
 {% endblock %}
 
-{% block content %}
+{% block body %}
+	<p>Page d'accueil de la partie administration</p>
+   {# 
+		bouton ajouter categorie,bouton ajouter article.
 
-    <h3> Page d'administration </h3>
-    Article -
-    <ul>
-    	<li><button>Ajouter</button></li>
-    	<li><button>Modifier</button></li>
-    	<li><button>supprimer</button></li>
-    </ul>
+		Bouton page spécial.
+
+		Affiche l'arbre categorie-article
+		A coté de chaque article, ajouter des btn d'édition et modification
+   #}
+<div class="ajouter_categorie">
+	<span>Ajouter une catégorie</span>
+	<form action="{{ path('lgdd_ajouter_categorie') }}" style="display:inline" method="GET">   
+		<input type="submit" value="ajouter" />
+	</form> 
+</div>
+<div class="ajouter_article">
+	<span>Ajouter un article</span>
+
+	<form action="{{ path('lgdd_ajouter_article') }}" style="display:inline" method="GET">   
+		<input type="submit" value="ajouter" />
+	</form> 
+</div>
+
+<ul class="admin-menu">
+	<ul>
+	    {{ _self.recursif_display(liste_normal_menu) }}
+	</ul>
+</ul>
+
+
+
+
 {% endblock %}
+
+
+{% macro recursif_display(liste_categories) %}     
+        
+
+            {% for categorie in liste_categories %}
+                <li>
+                	<span>{{ categorie.titre }}</span>  
+                	<form action="{{ path('lgdd_modifier_categorie',{'id':categorie.id}) }}" style="display:inline" method="GET">   
+                		<input type="submit" value="modifier" />
+					</form> 
+					<form action="{{ path('lgdd_supprimer',{'id':categorie.id, 'type' : 'categorie'}) }}" style="display:inline" method="GET">   
+						<input type="submit" value="suppr." />
+					</form>
+				</li>
+
+                {% set liste_childrens = categorie.childrens %}
+                {% set liste_articles = categorie.articles %}
+                {% if liste_childrens.count or liste_articles.count %}
+                	<ul>
+	                {% if liste_childrens.count %}
+	                    {{ _self.recursif_display(liste_childrens) }}
+	                {% endif %}
+
+	                {% for article in liste_articles %}   
+	                    <li>
+	                        <a href="{{ path('lgdd_voir_article', {'id': article.id}) }}">
+	                            <span>{{ article.titre }}</span>
+	                        </a>
+							<form action="{{ path('lgdd_modifier_article',{'id':article.id}) }}" style="display:inline" method="GET"> 
+								<input type="submit" value="modifier" />
+							</form>
+
+							<form action="{{ path('lgdd_supprimer',{'id':article.id, 'type' : 'categorie'}) }}" style="display:inline" method="GET"> 
+								<input type="submit" value="suppr."/>
+							</form>
+	                    </li>
+	                {% endfor %}
+					</ul>
+                {% endif %}
+            {% endfor %}
+        
+{% endmacro %}

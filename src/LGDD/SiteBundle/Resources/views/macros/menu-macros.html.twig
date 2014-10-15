@@ -1,0 +1,15 @@
+{% macro recursif_Articles(articleParent) %}
+    {% for articleEnfant in articleParent %}
+        <li>
+            <a href="{{ path('lgdd_voir_article', {'id': articleEnfant.id}) }}">{{ articleEnfant.titre }}</a>
+            {% if articleEnfant.children %}
+                <ul>
+                    {{ _self.recursif_Articles(articleEnfant.children) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+{% macro test() %}
+    lol
+{% endmacro %}

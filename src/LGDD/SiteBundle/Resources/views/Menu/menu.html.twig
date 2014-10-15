@@ -1,0 +1,43 @@
+<h3>Article tree :</h3>
+
+<ul>
+
+    {{ _self.recursif_display(liste_normal_menu) }}
+    <hr>
+     {% for annexe in liste_annexe %}  
+        <li>
+            <a href="{{ path('lgdd_voir_annexe', {'id': annexe.id}) }}">
+                <span>{{ annexe.titre }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% macro recursif_display(liste_categories) %}     
+        
+
+            {% for categorie in liste_categories %}
+                <li><span>{{ categorie.titre }}</span></li>
+
+                {% set liste_childrens = categorie.childrens %}
+                {% set liste_articles = categorie.articles %}
+                {% if liste_childrens.count or liste_articles.count %}
+                	<ul>
+	                {% if liste_childrens.count %}
+	                    {{ _self.recursif_display(liste_childrens) }}
+	                {% endif %}
+
+	                {% for article in liste_articles %}   
+	                    <li>
+	                        <a href="{{ path('lgdd_voir_article', {'id': article.id}) }}">
+	                            <span>{{ article.titre }}</span>
+	                        </a>
+	                    </li>
+	                {% endfor %}
+					</ul>
+                {% endif %}
+            {% endfor %}
+        
+{% endmacro %}

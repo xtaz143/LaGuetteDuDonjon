@@ -1,0 +1,20 @@
+{% extends "LGDDUserBundle::layout.html.twig" %}
+
+{% block menu %}
+
+  {% include "LGDDUserBundle:Admin:menu.html.twig" %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h2>Ajouter un article</h2>
+
+  {% include "LGDDUserBundle:Admin:formulaire.html.twig" %}
+
+  <p>
+     Attention : cet article sera ajouté directement
+     dans la liste des articles après validation du formulaire.
+  </p>
+
+{% endblock %}
