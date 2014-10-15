@@ -26,11 +26,16 @@ class AdministrationController extends Controller
 	    $repositoryCategorie = $manager->getRepository('LGDDSiteBundle:Categorie');
 	    $liste_normal_menu = $repositoryCategorie->getFirstLevel();
 
+	    $repositoryAnnexe = $manager->getRepository('LGDDSiteBundle:Annexe');
+	    $liste_annexe_menu = $repositoryAnnexe->findAll();
+
     	return $this->render('LGDDUserBundle:Admin:admin.html.twig', array(
-    		'liste_normal_menu' => $liste_normal_menu
+    		'liste_normal_menu' => $liste_normal_menu,
+    		'liste_annexe_menu' => $liste_annexe_menu
    		));
 	}
 
+// fonction Article
 	public function ajouterArticleAction() {
 
 	    $article = new Article;
@@ -119,6 +124,7 @@ class AdministrationController extends Controller
 	    ));
   	}
 
+//fonction Categorie
   	public function ajouterCategorieAction(){ 
   		$categorie = new Categorie;
 	    
@@ -209,6 +215,10 @@ class AdministrationController extends Controller
 	    ));
   	}
 
+//function Annexe
+
+
+//function All (in the future)
   	public function supprimerAction($id,$type) {
 
 	    // $manager = $this->getDoctrine()->getManager();
@@ -219,6 +229,9 @@ class AdministrationController extends Controller
   		}elseif($type == 'article'){
   			$repositoryArticle = $manager->getRepository('LGDDSiteBundle:Article');
       		$element = $repositoryArticle->findOneById($id);
+  		}elseif($type == 'annexe'){
+  			$repositoryAnnexe = $manager->getRepository('LGDDSiteBundle:Annexe');
+      		$element = $repositoryAnnexe->findOneById($id);
   		}
 
   		$form = $this->createFormBuilder()->getForm();

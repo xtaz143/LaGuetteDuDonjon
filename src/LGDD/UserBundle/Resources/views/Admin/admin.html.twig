@@ -30,9 +30,32 @@
 	</form> 
 </div>
 
+<div class="ajouter_annexe">
+	<span>Ajouter une page annexe</span>
+
+	<form action="{{ path('lgdd_ajouter_annexe') }}" style="display:inline" method="GET">   
+		<input type="submit" value="ajouter" />
+	</form> 
+</div>
+
 <ul class="admin-menu">
+	<p> Liste des categories et articles</p>
 	<ul>
-	    {{ _self.recursif_display(liste_normal_menu) }}
+	     {{ _self.recursif_display(liste_normal_menu) }} 
+	</ul>
+	<p>Liste des Annexes</p>
+	<ul>
+	     {% for annexe in liste_annexe_menu %}
+            <li>
+            	<span>{{ annexe.titre }}</span>  
+            	<form action="{{ path('lgdd_modifier_annexe',{'id':annexe.id}) }}" style="display:inline" method="GET">   
+            		<input type="submit" value="modifier" />
+				</form> 
+				<form action="{{ path('lgdd_supprimer',{'id':annexe.id, 'type' : 'annexe'}) }}" style="display:inline" method="GET">   
+					<input type="submit" value="suppr." />
+				</form>
+			</li>
+		{% endfor %}
 	</ul>
 </ul>
 
