@@ -46,7 +46,7 @@ class AdministrationController extends Controller
 	    				->getForm();
 	   
 	    if ($this->get('request')->getMethod() == 'POST') {
-
+	    	$request = $this->get('request');
 	    	$form->bind($request);
 	    	if($form->isValid()){
 	    		$em = $this->getDoctrine()->getManager();
