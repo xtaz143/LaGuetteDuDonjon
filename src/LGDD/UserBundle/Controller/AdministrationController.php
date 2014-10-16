@@ -125,7 +125,7 @@ class AdministrationController extends Controller
   	}
 
 //fonction Categorie
-  	public function ajouterCategorieAction(){ 
+  	public function ajouterCategorieAction() { 
   		$categorie = new Categorie;
 	    
 	    $form  =  $this ->createFormBuilder($categorie)
@@ -156,6 +156,8 @@ class AdministrationController extends Controller
     		'form' => $form->createView(),
   		));
   	}
+
+
 
   	public function modifierCategorieAction(Categorie $categorie) {
 
