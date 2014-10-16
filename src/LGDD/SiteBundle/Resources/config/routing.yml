@@ -1,9 +1,9 @@
 lgdd_Accueil:
     pattern:  /
-    defaults: { _controller: LGDDSiteBundle:Default:voirAnnexe, id: 1 }
+    defaults: { _controller: LGDDSiteBundle:Default:voirAnnexe, annexeID: 1 }
 lgdd_voir_annexe:
-    pattern:  /annexe/{id}
-    defaults: { _controller: LGDDSiteBundle:Default:voirAnnexe, id: 1 }
+    pattern:  /annexe/{annexeID}
+    defaults: { _controller: LGDDSiteBundle:Default:voirAnnexe, annexeID: 1 }
 lgdd_voir_article:
     pattern:  /article/{id}
     defaults: { _controller: LGDDSiteBundle:Default:voirArticle }
